@@ -1,0 +1,17 @@
+[package]
+name = "game_theory_auctions"
+version = "0.1.0"
+edition = "2021"
+license = "Unlicense"
+description = "Game theory and auction models for algorithmic trading education"
+
+[dependencies]
+nalgebra = "0.33"
+thiserror = "1"
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "auction_benchmark"
+harness = false
