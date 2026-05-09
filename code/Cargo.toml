@@ -1,0 +1,22 @@
+[package]
+name = "game-theory-auctions"
+version = "0.1.0"
+edition = "2021"
+description = "Game theory and auction implementations for algorithmic trading"
+license = "Unlicense"
+
+[dependencies]
+nalgebra = "0.33"
+rand = "0.8"
+rand_distr = "0.4"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+
+[[bench]]
+name = "auction_benchmark"
+harness = false
+
+[profile.release]
+lto = true
+codegen-units = 1
