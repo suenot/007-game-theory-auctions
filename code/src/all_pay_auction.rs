@@ -47,7 +47,7 @@ impl AllPayAuction {
     /// Symmetric equilibrium bid for a bidder with valuation `v` in an
     /// auction with `n` symmetric bidders and uniform `[0, 1]` priors.
     pub fn symmetric_equilibrium_bid(&self, valuation: f64) -> Result<f64> {
-        if !valuation.is_finite() || valuation < 0.0 || valuation > 1.0 {
+        if !valuation.is_finite() || !(0.0..=1.0).contains(&valuation) {
             return Err(GameError::InvalidParameter("valuation must be in [0, 1]"));
         }
         let n = self.num_bidders() as f64;
@@ -80,7 +80,7 @@ impl AllPayAuction {
     /// The expected payoff to the highest type is the prize minus expected
     /// payment; lower types earn zero in expectation.
     pub fn expected_payoff(&self, valuation: f64) -> Result<f64> {
-        if !valuation.is_finite() || valuation < 0.0 || valuation > 1.0 {
+        if !valuation.is_finite() || !(0.0..=1.0).contains(&valuation) {
             return Err(GameError::InvalidParameter("valuation must be in [0, 1]"));
         }
         let n = self.num_bidders() as f64;
